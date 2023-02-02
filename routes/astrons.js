@@ -1,6 +1,4 @@
 import express from "express";
-// import Events from "../../client/src/components/home/events/events.jsx";
-import generateUrl from "../middleware/imageUrl.js";
 import {Post , Gallery , Event} from "../models/models.js"
 
 

@@ -1,11 +1,10 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "main": "./src/api.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
-     "start":"NODE_ENV=developement /node_modules/.bin/netlify-lamba serve src",
-     "build":"NODE_ENV=production /node_modules/.bin/netlify-lamba serve src"
+     "start":"nodemon server.js"
   },
   "author": "",
   "license": "ISC",

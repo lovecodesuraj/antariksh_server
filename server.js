@@ -24,7 +24,9 @@ app.use(cors());
 connectToDb();
 
 app.use('/astrons',postRoutes);
-
+app.get("/",(req,res)=>{
+   res.send("server is running...")
+})
 
 app.listen(5000,function(res){
     console.log("server is running at port 5000");
