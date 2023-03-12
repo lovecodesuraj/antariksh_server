@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
-
+import dotenv from "dotenv"
+dotenv.config();
 const connectToDb= async ()=>{
    try {
       const connectionParams={
         useNewUrlParser:true,
         useUnifiedTopology:true,
       }
-       mongoose.connect('mongodb+srv://suraj:3MrsAH9HPeYqq6By@cluster0.sop60is.mongodb.net/?retryWrites=true&w=majority',connectionParams)
+       mongoose.connect(process.env.DB,connectionParams)
        console.log("connected to databse");
     } catch (error) {
        console.log(error.message);

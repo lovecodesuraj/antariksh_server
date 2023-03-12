@@ -1,68 +1,21 @@
 import express from "express";
-import {Post , Gallery , Event} from "../models/models.js"
+import { Post, Gallery, Event } from "../models/models.js"
+import { fetchPosts, joiningForm,contactForm, addPost,fetchEvents, addToGallery, fetchGallery, addEvent } from "../controllers/index.js";
+
+const router = express.Router();
 
 
-const router =express.Router();
+
+router.get("/posts", fetchPosts);
+router.post("/addPost", addPost);
+router.post("/addToGallery", addToGallery)
+router.get("/gallery", fetchGallery);
+router.post("/event", addEvent);
+router.get("/events", fetchEvents);
+router.post("/joiningForm",joiningForm);joiningForm,contactForm
+router.post("/contactForm",contactForm);
 
 
-
-router.get("/posts",async (req,res)=>{
-  const result=await Post.find({});
-  // console.log(result);
-  res.send(result);
-})
-router.post("/addPost",async (req,res) => {
-    const body=req.body;
-    console.log(body)
-
-  // const imageUrl = await generateUrl(photo);
-    const post = new Post(body)
-    post.save();
-    res.status(200);
-    // console.log(body)
-    // console.log("post saved successfully")
-
-})
-
-router.post("/addToGallery",async (req,res) => {
-  const image=req.body.photo;
-  // const results=Gallery.find({name:"images"});
-  // console.log(results);
-  try{
-      const gallery =  new Gallery({image:image}); 
-      await gallery.save();
-      res.send("posted successfully")
-  }catch(err){
-        console.log(err);
-  }
-})
- router.get("/gallery", async (req,res)=>{
-   
-  const results = await Gallery.find({});
-  // console.log(results)
-  res.json(results);
- })
-
- router.post("/event",async (req,res) => {
-  const image=req.body.photo;
-  try{
-      const event =  new Event({image:image}); 
-      await event.save();
-      res.send("posted successfully")
-  }catch(err){
-        console.log(err);
-  }
-})
-
- router.get("/events",async (req,res)=>{
-    try{
-      const results=await Event.find({});
-      res.json(results);
-    }
-    catch(err){
-
-    }
- })
 export default router;
 
 
